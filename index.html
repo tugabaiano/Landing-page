@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advocacia Premium | Justiça e Excelência</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+   <header id="navbar">
+        <div class="container">
+            <div class="logo-container">
+                <img src="img/logo.jpeg" alt="Logo" class="logo-img" />
+                <h1 class="logo-text">Cruz Rodrigues Advocacia</h1>
+            </div>
+            <nav>
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Área de atuação</a></li>
+                <li><a href="#contato" class="btn-nav">Falar com Advogado</a></li>
+            </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+      <div class="container">
+        <h2>Defendendo seus direitos com <br /><span>Ética e Rigor.</span></h2>
+        <p>Soluções jurídicas estratégicas para questões complexas.</p>
+        <a href="#contato" class="btn-main">Agende uma Consulta</a>
+      </div>
+    </section>
+
+    <section id="sobre" class="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-images">
+            <img
+              src="img/dono.jpg"
+              alt="Dono do Escritório"
+              class="img-owner"
+            />
+            <img
+              src="img/escritorio.jpg"
+              alt="Nosso Escritório"
+              class="img-office"
+            />
+          </div>
+          <div class="about-text">
+            <h3>Sobre o Fundador</h3>
+            <p>
+              Com mais de 15 anos de experiência no mercado jurídico, o
+              <strong>Dr. Leonardo Rodrigues</strong> fundou este escritório com o
+              propósito de humanizar a advocacia e entregar resultados de
+              excelência.
+            </p>
+            <p>
+              Especialista em Direito Civil e Estratégia Processual, coordena
+              uma equipe focada em oferecer segurança jurídica e atendimento
+              personalizado para cada cliente que cruza nossas portas.
+            </p>
+            <div class="stats">
+              <div>
+                <strong>+500</strong>
+                <p>Casos Ganhos</p>
+              </div>
+              <div>
+                <strong>15</strong>
+                <p>Anos de Carreira</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicos" class="services full-screen">
+        <div class="container">
+            <h3>Nossas Áreas de Atuação</h3>
+            <div class="grid-services">
+            <div class="card">
+                <h4>Direito Civil e Contratos</h4>
+                <p>Atuação estratégica em indenizações, elaboração de contratos complexos e resolução de conflitos patrimoniais.</p>
+            </div>
+            <div class="card">
+                <h4>Direito de Família</h4>
+                <p>Assessoria humanizada em divórcios, partilha de bens, guarda e inventários, priorizando o sigilo e a conciliação.</p>
+            </div>
+            <div class="card">
+                <h4>Direito Previdenciário</h4>
+                <p>Planejamento de aposentadoria e concessão de benefícios junto ao INSS, garantindo o descanso que você merece.</p>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="contact">
+      <div class="container">
+        <h3>Solicite uma Consultoria</h3>
+        <form id="contact-form">
+          <input
+            type="text"
+            id="name"
+            placeholder="Seu Nome Completo"
+            required
+          />
+          <div class="form-row">
+            <input
+              type="text"
+              id="cpf"
+              placeholder="CPF (000.000.000-00)"
+              required
+            />
+            <input
+              type="tel"
+              id="phone"
+              placeholder="WhatsApp / Telefone"
+              required
+            />
+          </div>
+          <input type="email" id="email" placeholder="Seu E-mail" required />
+          <textarea
+            id="message"
+            placeholder="Descreva brevemente seu caso..."
+            required
+          ></textarea>
+          <button type="submit" class="btn-submit">Enviar Mensagem</button>
+        </form>
+        <div id="form-response"></div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 Cruz Rodrigues & Associados. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

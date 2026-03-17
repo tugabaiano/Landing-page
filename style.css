@@ -16,6 +16,7 @@ body {
   line-height: 1.6;
   color: var(--dark);
   scroll-behavior: smooth;
+  margin-top: 60px;
 }
 
 .container {
@@ -72,6 +73,8 @@ header ul li a {
   align-items: center;
   text-align: center;
   color: white;
+  margin-top: -60px;
+  padding-top: 60px;
 }
 
 .hero h2 {
@@ -240,7 +243,14 @@ footer {
 .about, .services, .contact {
   display: flex;
   align-items: center;
-  min-height: 100vh;
+  min-height: auto;
+  padding-top: 80px;
+}
+
+@media (max-width: 768px) {
+  .about, .services, .contact {
+    padding-top: 60px;
+  }
 }
 
 .grid-services {
@@ -260,8 +270,8 @@ footer {
 }
 
 .logo-img {
-  height: 60px; /* Altura ideal para o menu */
-  width: auto;  /* Mantém a proporção */
+  height: 120px; 
+  width: auto;  
   display: block;
   transition: 0.3s;
 }
@@ -280,12 +290,300 @@ footer {
 
 /* Efeito opcional: diminuir a logo um pouco quando rolar a página */
 #navbar.scrolled .logo-img {
-  height: 45px;
+  height: 75px;
 }
+
+
 
 /* Garante que o container alinhe a logo e o menu verticalmente */
 header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+/* Animações para as seções */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-animate {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Transições suaves para elementos */
+a, button, input, textarea {
+  transition: all 0.3s ease;
+}
+
+/* Botão flutuante WhatsApp */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: #25d366;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+  text-decoration: none;
+  z-index: 999;
+  animation: slideInUp 0.5s ease-out;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+  background: #1da851;
+  transform: scale(1.15);
+  box-shadow: 0 12px 32px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-btn:active {
+  transform: scale(0.95);
+}
+
+.whatsapp-btn svg {
+  width: 32px;
+  height: 32px;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media query para o botão em dispositivos menores */
+@media (max-width: 768px) {
+  .whatsapp-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+  }
+  
+  .whatsapp-btn svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Efeitos de hover nos cards */
+.card {
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Efeito nos botões */
+.btn-main:hover,
+.btn-submit:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(197, 160, 89, 0.3);
+}
+
+.btn-nav:hover {
+  background: #b8915a;
+  transform: translateY(-2px);
+}
+
+/* Links com transição */
+header ul li a:hover {
+  color: var(--accent);
+  transition: color 0.3s ease;
+}
+
+/* Menu Hamburguer */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(10px, 10px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(10px, -10px);
+}
+
+/* Menu Responsivo */
+.nav-menu {
+  display: flex;
+}
+
+.nav-menu ul {
+  display: flex;
+}
+
+/* CSS para mobile */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .container {
+    width: 95%;
+    padding: 0 10px;
+  }
+
+  header {
+    padding: 0.5rem 0;
+  }
+
+  header .container {
+    padding: 0 1rem;
+    gap: 10px;
+  }
+
+  .menu-toggle {
+    display: flex;
+    z-index: 1001;
+  }
+
+  .nav-menu {
+    position: fixed;
+    left: 0;
+    top: 60px;
+    width: 100%;
+    height: auto;
+    background: var(--primary);
+    flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-menu.active {
+    max-height: 500px;
+  }
+
+  .nav-menu ul {
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-menu ul li {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 0;
+  }
+
+  .nav-menu ul li:last-child {
+    border-bottom: none;
+  }
+
+  .nav-menu ul li a {
+    display: block;
+    padding: 15px 20px;
+    width: 100%;
+    text-align: left;
+    color: white;
+  }
+
+  .nav-menu ul li a.btn-nav {
+    background: var(--accent);
+    color: var(--primary) !important;
+    border-radius: 0;
+    text-align: center;
+    padding: 15px 20px;
+    margin: 10px 0;
+    border-bottom: none;
+  }
+
+  .logo-text {
+    font-size: 1rem;
+  }
+
+  .logo-img {
+    height: 45px;
+  }
+
+  #navbar.scrolled .logo-img {
+    height: 45px;
+  }
+
+  .hero h2 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .btn-main {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-images {
+    height: auto;
+    margin-bottom: 30px;
+  }
+
+  .img-office {
+    display: none;
+  }
+
+  .about-text h3 {
+    font-size: 1.8rem;
+  }
+
+  .grid-services {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-menu ul {
+    flex-direction: column;
+  }
 }

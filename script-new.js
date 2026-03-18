@@ -1,23 +1,4 @@
-// Máscara robusta para CPF com validação
-const cpfInput = document.getElementById("cpf");
-if (cpfInput) {
-  cpfInput.addEventListener("input", (e) => {
-    let v = e.target.value.replace(/\D/g, "").slice(0, 11);
-    if (v.length <= 3) {
-      e.target.value = v;
-      return;
-    }
-    if (v.length <= 6) {
-      e.target.value = v.replace(/(\d{3})(\d{1,3})/, "$1.$2");
-      return;
-    }
-    if (v.length <= 9) {
-      e.target.value = v.replace(/(\d{3})(\d{3})(\d{1,3})/, "$1.$2.$3");
-      return;
-    }
-    e.target.value = v.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/, "$1.$2.$3-$4");
-  });
-}
+
 
 // Navbar scroll with smooth transitions and blur effect
 window.addEventListener("scroll", function () {

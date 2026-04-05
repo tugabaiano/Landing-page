@@ -103,49 +103,51 @@ document.querySelectorAll('.card').forEach(card => {
   observer.observe(card);
 });
 
-// Contact form handling
-const contactForm = document.getElementById('contact-form');
-const formResponse = document.getElementById('form-response');
+// Observe testimonial cards
+document.querySelectorAll('.testimonial-card').forEach(card => {
+  observer.observe(card);
+});
 
-if (contactForm) {
-  contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const name = document.getElementById('name').value;
-    const cpf = document.getElementById('cpf').value;
-    const phone = document.getElementById('phone').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-    
-    // Validação básica
-    if (!name || !cpf || !phone || !email || !message) {
-      formResponse.innerHTML = '❌ Por favor, preencha todos os campos.';
-      formResponse.className = 'error';
-      formResponse.style.display = 'block';
-      return;
-    }
-    
-    // Simular envio (em produção, isso seria um POST para um backend)
-    formResponse.innerHTML = '📧 Enviando mensagem...';
-    formResponse.className = '';
-    formResponse.style.display = 'block';
-    
-    setTimeout(() => {
-      formResponse.innerHTML = '✅ Mensagem enviada com sucesso! Entraremos em contato em breve.';
-      formResponse.className = 'success';
-      
-      // Limpar formulário
-      contactForm.reset();
-      
-      // Remover mensagem após 5 segundos
-      setTimeout(() => {
-        formResponse.style.display = 'none';
-      }, 5000);
-    }, 1000);
-  });
-}
+// Simple testimonials carousel
+(function() {
+  const track = document.querySelector('.carousel-track');
+  const prevBtn = document.querySelector('.carousel-btn.prev');
+  const nextBtn = document.querySelector('.carousel-btn.next');
+  const dotsContainer = document.querySelector('.carousel-dots');
   
-  // Smooth scrolling script can be appended here
+  if (!track) return;
+  
+  const cards = Array.from(track.querySelectorAll('.testimonial-card'));
+  let currentIndex = 0;
+  
+  // Create dots
+  cards.forEach((_, i) => {
+    const dot = document.createElement('button');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsContainer.appendChild(dot);
+  });
+  
+  const dots = Array.from(dotsContainer.querySelectorAll('button'));
+  
+  function updateCarousel() {
+    const cardWidth = cards[0].offsetWidth + 20; // width + gap
+    track.scrollLeft = currentIndex * cardWidth;
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+  }
+  
+  function goToSlide(index) {
+    currentIndex = (index + cards.length) % cards.length;
+    updateCarousel();
+  }
+  
+  if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+  
+  updateCarousel();
+})();
+
+// Smooth scrolling script can be appended here
 
   (function() {
     // Enable custom wheel-smoothing on non-touch devices.

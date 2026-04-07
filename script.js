@@ -78,10 +78,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Animação das seções ao entrar no viewport (Intersection Observer)
 const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px'
+  threshold: 1,
+  rootMargin: '0px 0px 100px 0px'
 };
 
 const observer = new IntersectionObserver(function(entries) {
@@ -181,14 +180,14 @@ document.querySelectorAll('.testimonial-card').forEach(card => {
         }
       }
 
-      window.addEventListener('wheel', onWheel, { passive: false });
-      // ensure target syncs on manual scrolls (keyboard/anchor)
-      window.addEventListener('scroll', () => {
-        if (!isRunning) {
-          target = window.scrollY;
-          current = window.scrollY;
-        }
-      }, { passive: true });
+      // window.addEventListener('wheel', onWheel, { passive: false });
+      // // ensure target syncs on manual scrolls (keyboard/anchor)
+       window.addEventListener('scroll', () => {
+         if (!isRunning) {
+           target = window.scrollY;
+           current = window.scrollY;
+         }
+       }, { passive: true });
     }
   })();
 

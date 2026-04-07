@@ -1599,3 +1599,130 @@ header ul li a:hover {
     min-width: 85vw;
   }
 }
+
+/* ── Serviços ── */
+.services-subtitle {
+  color: #666;
+  font-size: 1rem;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.services-carousel-wrap {
+  margin-top: 40px;
+}
+
+.services-track {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+.srv-card {
+  background: white;
+  border-radius: 10px;
+  border-bottom: 5px solid var(--accent);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.srv-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+}
+
+.srv-img-slot {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(135deg, #dce4ec 0%, #c8d5e0 100%);
+  overflow: hidden;
+}
+
+.srv-img-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.srv-card-body {
+  padding: 24px;
+  text-align: left;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.srv-card-body h4 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+
+.srv-card-desc {
+  font-size: 0.88rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.srv-topics {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.srv-topics li {
+  font-size: 0.83rem;
+  color: #444;
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.srv-topics li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* ── Mobile: vira carrossel ── */
+@media (max-width: 768px) {
+  .services-carousel-wrap {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .services-track {
+    display: flex;
+    grid-template-columns: unset;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 12px;
+  }
+
+  .services-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .srv-card {
+    flex: 0 0 85vw;
+    scroll-snap-align: center;
+  }
+}

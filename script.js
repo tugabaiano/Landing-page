@@ -220,3 +220,37 @@ document.querySelectorAll('.testimonial-card').forEach(card => {
       window.addEventListener('load', updateBar, { passive: true });
       updateBar();
     })();
+
+    // Carrossel de Serviços
+(function () {
+  const track = document.getElementById('srv-track');
+  const dotsWrap = document.getElementById('srv-dots');
+  const prevBtn = document.getElementById('srv-prev');
+  const nextBtn = document.getElementById('srv-next');
+
+  if (!track) return;
+
+  const cards = Array.from(track.querySelectorAll('.srv-card'));
+  let current = 0;
+
+  cards.forEach((_, i) => {
+    const dot = document.createElement('button');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => go(i));
+    dotsWrap.appendChild(dot);
+  });
+
+  const dots = Array.from(dotsWrap.querySelectorAll('button'));
+
+  function go(index) {
+    current = (index + cards.length) % cards.length;
+    const cardWidth = cards[0].offsetWidth + 24;
+    track.scrollLeft = current * cardWidth;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => go(current - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => go(current + 1));
+
+  go(0);
+})();
